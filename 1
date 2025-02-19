@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Hover Effect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="image-container">
+        <img src="image1.jpg" alt="Image 1" class="resized-image">
+        <img src="image2.jpg" alt="Image 2" class="resized-image">
+        <img src="image3.jpg" alt="Image 3" class="resized-image">
+        <img src="image4.jpg" alt="Image 4" class="resized-image">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.image-container {
+    display: flex;
+    gap: 10px;
+}
+
+.resized-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.resized-image:hover {
+    transform: scale(1.5);
+    z-index: 1;
+}
+
+// 你可以在这里添加一些JavaScript代码来处理动态插入图片
+// 例如，根据用户输入动态添加图片
+
+// 示例：动态插入图片
+const imageContainer = document.querySelector('.image-container');
+
+const images = [
+    'image1.jpg',
+    'image2.jpg',
+    'image3.jpg',
+    'image4.jpg'
+];
+
+images.forEach((src, index) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `Image ${index + 1}`;
+    img.classList.add('resized-image');
+    imageContainer.appendChild(img);
+});
